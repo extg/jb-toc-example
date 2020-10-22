@@ -9,10 +9,12 @@
     "start:prod": "NODE_ENV=production node build/server.js"
   },
   "dependencies": {
+    "axios": "^0.20.0",
     "express": "^4.17.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "swr": "^0.3.6"
   },
   "devDependencies": {
     "razzle": "^3.3.7"
