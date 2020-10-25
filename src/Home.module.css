@@ -11,5 +11,5 @@
 }
 
 .search:focus {
-  box-shadow: inset 0px 0px 0px 2px rgba(65,100,200,0.75);
+  box-shadow: inset 0px 0px 0px 1px rgba(65,100,200,1);
 }

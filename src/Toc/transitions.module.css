@@ -1,0 +1,48 @@
+.root {
+  overflow: hidden;
+  transition-duration: 200ms;
+  transition-property: opacity, transform, max-height;
+  height: auto;
+  transform-origin: top;
+}
+
+.appear {
+}
+
+.appearActive {
+}
+
+.appearDone {
+
+}
+
+.enter {
+  opacity: 0;
+  transform: scaleY(0);
+  max-height: 0;
+}
+
+.enterActive {
+  opacity: 1;
+  transform: scaleY(1);
+  max-height: 500px;
+}
+
+.enterDone {
+}
+
+.exit {
+  opacity: 1;
+  transform: scaleY(1);
+  max-height: 500px;
+}
+
+.exitActive {
+  opacity: 0;
+  transform: scaleY(0);
+  max-height: 0;
+}
+
+.exitDone {
+
+}
