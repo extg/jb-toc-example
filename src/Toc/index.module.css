@@ -1,0 +1,59 @@
+.tocWrapper {
+  padding: 24px 32px;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Droid Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.page > a {
+  display: block;
+  padding: 8px 32px 8px 46px; /* 32 + 14 */
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+  color: #333;
+  text-decoration: none;
+}
+
+.page > a:hover {
+  background-color: #F4F4F5
+}
+
+.page.hasChildren > a::before {
+  top: 9px; /* (32 - 14) / 2 = 9 */
+  left: 32px;
+  position: absolute;
+  content: '';
+  background: url('./triangle.svg');
+  background-size: cover;
+  width: 14px;
+  height: 14px;
+}
+
+.page.isOpen > a::before {
+  transform: rotate(90deg);
+}
+
+.anchors {
+  padding-left: 16px;
+}
+
+.pages {
+  padding-left: 16px;
+}
+
+.anchor {
+  padding: 8px 32px 8px 46px; /* 32 + 14 */
+  display: block;
+  margin: 0 -16px;
+  user-select: none;
+  color: #333;
+  text-decoration: none;
+}
+
+.anchor:hover {
+  background-color: #F4F4F5
+}

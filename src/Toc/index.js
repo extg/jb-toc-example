@@ -1,37 +1,47 @@
 import React, { useState } from 'react';
+import classnames from 'classnames/bind';
 
 import styles from './index.module.css';
 
-const TocItemPage = ({ url, title, pages, anchors }) => {
- const [isOpen, setIsOpen] = useState(false)
+const cx = classnames.bind(styles)
 
- return (
-   <div>
-     <a onClick={() => setIsOpen(prev => !prev)}>{title}</a>
-     {isOpen && anchors && (
-       <div>
-        {anchors.map(anchor => <TocItemAnchor key={anchor.id} {...anchor} />)}
-      </div>
-     )}
-     {isOpen && pages && (
-      <div>
-         {pages.map(page => <TocItemPage key={page.id} {...page} />)}
-      </div>
-     )}
-   </div>
- )
+// TODO: url не использую, т.к. нужно подключить ReactRouter
+const TocItemPage = ({ url, title, pages, anchors }) => {
+  const [isOpen, setIsOpen] = useState(false)
+
+  const hasChildren = pages?.length > 0 || anchors?.length > 0
+
+  return (
+    <div className={cx('page', { isOpen, hasChildren })}>
+      <a onClick={() => setIsOpen(prev => !prev)}>{title}</a>
+      {isOpen && anchors && (
+        <div className={styles.anchors}>
+          {anchors.map(anchor => <TocItemAnchor key={anchor.id} {...anchor} />)}
+        </div>
+      )}
+      {isOpen && pages && (
+        <div className={styles.pages}>
+          {pages.map(page => <TocItemPage key={page.id} {...page} />)}
+        </div>
+      )}
+    </div>
+  )
 }
 
 const TocItemAnchor = ({ title, url }) => {
   return (
-    <a>
+    <a className={styles.anchor}>
       {title}
     </a>
   )
 }
 
 const Toc = ({ tree }) => {
-  return tree.map(page => <TocItemPage key={page.id} {...page} />)
+  return (
+    <div className={styles.tocWrapper}>
+      {tree.map(page => <TocItemPage key={page.id} {...page} />)}
+    </div>
+  )
 }
 
 export default Toc;

@@ -8,26 +8,6 @@ import Toc from './Toc';
 
 const fetcher = (url) => axios.get(url).then(response => response.data)
 
-// const t = [
-//   {
-//     id,
-//     url,
-//     anchor,
-//     title,
-//     items: [
-//       {
-//         id,
-//         url,
-//         anchor,
-//         title,
-//         items: [
-
-//         ]
-//       }
-//     ]
-//   }
-// ]
-
 const createTree = ({ entities, id }) => {
   const page = entities.pages[id]
 
@@ -51,26 +31,15 @@ const createTree = ({ entities, id }) => {
 const Home = () => {
   const { data } = useSWR('/HelpTOC.json', fetcher)
 
-  console.log('data', data)
-
   if (!data) {
     return null
   }
 
   const tree = data.topLevelIds.map(id => createTree({ entities: data.entities, id }))
 
-  console.log('tree', tree)
-
   return (
     <div className={styles.root}>
-      <div className={styles.toc}>
-        <nav>
-          <Toc tree={tree} />
-        </nav>
-      </div>
-      <main>
-        hello
-      </main>
+      <Toc tree={tree} />
     </div>
   );
 }
