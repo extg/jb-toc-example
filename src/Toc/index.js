@@ -6,14 +6,14 @@ import styles from './index.module.css';
 const cx = classnames.bind(styles)
 
 // TODO: url не использую, т.к. нужно подключить ReactRouter
-const TocItemPage = ({ url, title, pages, anchors }) => {
-  const [isOpen, setIsOpen] = useState(false)
+const TocItemPage = ({ url, title, pages, anchors, isOpen: initialState = false }) => {
+  const [isOpen, setIsOpen] = useState(initialState)
 
   const hasChildren = pages?.length > 0 || anchors?.length > 0
 
   return (
     <div className={cx('page', { isOpen, hasChildren })}>
-      <a onClick={() => setIsOpen(prev => !prev)}>{title}</a>
+      <a tabIndex={0} onClick={() => setIsOpen(prev => !prev)}>{title}</a>
       {isOpen && anchors && (
         <div className={styles.anchors}>
           {anchors.map(anchor => <TocItemAnchor key={anchor.id} {...anchor} />)}

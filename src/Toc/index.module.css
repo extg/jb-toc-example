@@ -1,11 +1,8 @@
 .tocWrapper {
-  padding: 24px 32px;
+  /* padding: 24px 32px; */
   display: flex;
   flex-direction: column;
   width: 500px;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Droid Sans', 'Helvetica Neue', Arial, sans-serif;
-  font-size: 12px;
-  line-height: 16px;
 }
 
 .page > a {
@@ -14,12 +11,15 @@
   cursor: pointer;
   position: relative;
   user-select: none;
-  color: #333;
   text-decoration: none;
 }
 
 .page > a:hover {
   background-color: #F4F4F5
+}
+
+.page > a:active {
+  box-shadow: inset 0px 0px 0px 2px rgba(65,100,200,0.75);
 }
 
 .page.hasChildren > a::before {
@@ -50,7 +50,6 @@
   display: block;
   margin: 0 -16px;
   user-select: none;
-  color: #333;
   text-decoration: none;
 }
 
