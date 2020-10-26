@@ -1,0 +1,26 @@
+.root {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Same as TocPageItem */
+.textLine {
+  display: block;
+  padding: 8px 32px 8px 46px; /* 32 + 14 */
+  position: relative;
+  user-select: none;
+  text-decoration: none;
+  border-radius: 0;
+}
+
+.textLine > span {
+  color: #F4F4F4;
+  background-color: #F4F4F4;
+  animation: flash 1.5s ease-in-out infinite;
+}
+
+@keyframes flash {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}

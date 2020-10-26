@@ -48,7 +48,7 @@ const TocItemAnchor = ({ title, url }) => {
   )
 }
 
-const Toc = ({ tree }) => {
+const Toc = ({ tree = [] }) => {
   return (
     <div className={styles.tocWrapper}>
       {tree.map(page => <TocItemPage key={page.id} {...page} />)}

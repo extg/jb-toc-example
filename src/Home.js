@@ -4,10 +4,22 @@ import axios from 'axios'
 import Fuse from 'fuse.js'
 import { useDebouncedCallback } from 'use-lodash-debounce'
 
-import styles from './Home.module.css';
+import styles from './Home.module.css'
 import Toc from './Toc';
+import TocPlaceholder from './TocPlaceholder';
 
-const fetcher = (url) => axios.get(url).then(response => response.data)
+// for dev
+const FAKE_LOADING_TIMEOUT = process.env.NODE_ENV === 'production' ? 0 : 3000
+
+const fetcher = (url) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      axios.get(url)
+        .then(response => response.data)
+        .then(resolve, reject)
+    }, FAKE_LOADING_TIMEOUT);
+  })
+}
 
 const createTree = ({ entities, id, isOpen = false }) => {
   const page = entities.pages[id]
@@ -36,18 +48,18 @@ const Home = () => {
 
   const handleChange = useDebouncedCallback(event => console.log('event', event.target) || setValue(event.target.value), 10)
 
-  if (!data) {
-    return null
-  }
+  let tree
 
-  let tree = data.topLevelIds.map(id => createTree({ entities: data.entities, id }))
-
-  const options = {
-    keys: ['title'],
-    threshold: 0,
+  if (data) {
+    tree = data.topLevelIds.map(id => createTree({ entities: data.entities, id }))
   }
 
   if (value) {
+    const options = {
+      keys: ['title'],
+      threshold: 0,
+    }
+
     const pages = Object.values(data.entities.pages)
     const anchors = Object.values(data.entities.anchors)
 
@@ -71,7 +83,8 @@ const Home = () => {
         onChange={handleChange}
         placeholder='Search'
       />
-      <Toc tree={tree} />
+      {!tree && <TocPlaceholder />}
+      {tree && <Toc tree={tree} />}
     </div>
   );
 }

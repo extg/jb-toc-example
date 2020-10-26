@@ -12,11 +12,6 @@ server
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
   .get('/*', (req, res) => {
     const context = {};
-    const markup = renderToString(
-      <StaticRouter context={context} location={req.url}>
-        <App />
-      </StaticRouter>
-    );
 
     if (context.url) {
       res.redirect(context.url);
@@ -41,7 +36,7 @@ server
         }
     </head>
     <body>
-        <div id="root">${markup}</div>
+        <div id="root"></div>
     </body>
 </html>`
       );
