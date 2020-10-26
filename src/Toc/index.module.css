@@ -15,14 +15,16 @@
   user-select: none;
   text-decoration: none;
   border-radius: 0;
+  outline: none;
 }
 
 .page > a:hover {
   background-color: #F4F4F5
 }
 
-.page > a:active {
+.page > a:focus {
   box-shadow: inset 0px 0px 0px 1px rgba(65,100,200,0.75);
+  font-weight: 700;
 }
 
 .page.hasChildren > a::before {

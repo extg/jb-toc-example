@@ -146,7 +146,7 @@ const Home = () => {
   const tree = useTocTree(data, value)
 
   return (
-    <div>
+    <div className={styles.root}>
       <input
         type='text'
         className={styles.search}
