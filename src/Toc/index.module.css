@@ -9,7 +9,7 @@
 
 .page > a {
   display: block;
-  padding: 8px 32px 8px 46px; /* 32 + 14 */
+  padding: 8px 32px 8px 0;
   cursor: pointer;
   position: relative;
   user-select: none;
@@ -27,9 +27,13 @@
   font-weight: 700;
 }
 
-.page.hasChildren > a::before {
-  top: 9px; /* (32 - 14) / 2 = 9 */
-  left: 32px;
+.text {
+  display: inline-block;
+  position: relative;
+}
+
+.page.hasChildren > a .text::before {
+  left: -16px;
   position: absolute;
   content: '';
   background: url('./triangle.svg');
@@ -38,20 +42,12 @@
   height: 14px;
 }
 
-.page.isOpen > a::before {
+.page.isOpen > a .text::before {
   transform: rotate(90deg);
 }
 
-.anchors {
-  padding-left: 16px;
-}
-
-.pages {
-  padding-left: 16px;
-}
-
 .anchor {
-  padding: 8px 32px 8px 46px; /* 32 + 14 */
+  padding: 8px 32px 8px 0;
   display: block;
   margin: 0 -16px;
   user-select: none;
