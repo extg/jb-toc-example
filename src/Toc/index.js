@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import classnames from 'classnames/bind';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
@@ -10,6 +10,10 @@ const cx = classnames.bind(styles)
 // TODO: url не использую, т.к. нужно подключить ReactRouter
 const TocItemPage = ({ url, title, pages, anchors, isOpen: initialState = false }) => {
   const [isOpen, setIsOpen] = useState(initialState)
+
+  useEffect(() => {
+    setIsOpen(initialState)
+  }, [initialState])
 
   const hasChildren = pages?.length > 0 || anchors?.length > 0
 

@@ -24,11 +24,6 @@ const TocPlaceholder = () => {
       <TextLine>Big Data tools</TextLine>
       <TextLine>Scientific tools</TextLine>
       <TextLine>Advanced IDE Features</TextLine>
-      <TextLine>IntelliJ IDEA Edu</TextLine>
-      <TextLine>Migration Guides</TextLine>
-      <TextLine>Language and framework-specific guidelines</TextLine>
-      <TextLine>Tutorials</TextLine>
-      <TextLine>Reference</TextLine>
     </div>
   )
 }
